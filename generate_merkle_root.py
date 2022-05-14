@@ -1,4 +1,8 @@
-"""Accepts a voter's public key, and register it to the merkle_tree."""
+"""Accepts a voter's public key, and register it to the merkle_tree.
+
+read about merkle_tree here: https://bit.ly/3szuTPO
+watch about merkle_tree here: https://bit.ly/3Ng7vyK
+"""
 
 
 def get_merkle_root(voter_key):
@@ -6,3 +10,5 @@ def get_merkle_root(voter_key):
     # return merkle_root
     
     pass
+
+
