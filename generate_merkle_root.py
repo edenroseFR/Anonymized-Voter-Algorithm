@@ -3,7 +3,7 @@
 read about merkle_tree here: https://bit.ly/3szuTPO
 watch about merkle_tree here: https://bit.ly/3Ng7vyK
 
-sourcecode from: https://trebaud.github.io/posts/merkle-tree/
+
 """
 
 
@@ -18,15 +18,16 @@ class Node:
 
     @staticmethod
     def hash(val: str)-> str:
-        """Hashing function"""
-        
         return hashlib.sha256(val.encode('utf-8')).hexdigest()
 
     @staticmethod
-    def double_hash(val: str)-> str:
-        """Hash two times for extra protection"""
+    def hashfunc(val: str, n=10)-> str:
+        """Hash ::val ::n number of times"""
         
-        return Node.hash(Node.hash(val))
+        for _ in range(n):
+            val = Node.hash(val)
+
+        return val
     
     
 class MerkleTree:
@@ -34,7 +35,7 @@ class MerkleTree:
         self.__build_tree(values)
 
     def __build_tree(self, values: List[str])-> None:
-        leaves: List[Node] = [Node(None, None, Node.double_hash(e)) for e in values]
+        leaves: List[Node] = [Node(None, None, Node.hashfunc(e)) for e in values]
         if len(leaves) % 2 == 1:
             leaves.append(leaves[-1:][0]) # duplicate last elem if odd number of elements
         self.root: Node = self.__build_tree_rec(leaves)
@@ -43,11 +44,11 @@ class MerkleTree:
         half: int = len(nodes) // 2
 
         if len(nodes) == 2:
-            return Node(nodes[0], nodes[1], Node.double_hash(nodes[0].value + nodes[1].value))
+            return Node(nodes[0], nodes[1], Node.hashfunc(nodes[0].value + nodes[1].value))
 
         left: Node = self.__build_tree_rec(nodes[:half])
         right: Node = self.__build_tree_rec(nodes[half:])
-        value: str = Node.double_hash(left.value + right.value)
+        value: str = Node.hashfunc(left.value + right.value)
         return Node(left, right, value)
 
     def print_tree(self)-> None:
