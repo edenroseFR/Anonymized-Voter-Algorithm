@@ -3,7 +3,7 @@
 read about merkle_tree here: https://bit.ly/3szuTPO
 watch about merkle_tree here: https://bit.ly/3Ng7vyK
 
-
+Code source: https://trebaud.github.io/posts/merkle-tree/ 
 """
 
 
@@ -64,9 +64,19 @@ class MerkleTree:
         return self.root.value
     
 
+
+class Voters:
+    FILE = 'shadow_ids.csv'
+    
+    def get_all():
+        ids = [] # store IDS in a list data structure
+        return ids
+
+
+
 def main()-> None:
-    elems = ["Hello", "mister", "Merkle"]
-    mtree = MerkleTree(elems)
+    voters = Voters.get_all()
+    mtree = MerkleTree(voters)
     print(mtree.get_root_hash())
 
 
