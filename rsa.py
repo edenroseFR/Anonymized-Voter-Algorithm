@@ -14,4 +14,9 @@ def encrypt(k, n):
     return '-'.join(encrypted)
 
 
+def decrypt(k,n):
+    i, N = k
+    n = list(n.split('-'))
+    decrypted = [str(int(c)**i % N) for c in n]
+    return int(''.join(decrypted))
 
