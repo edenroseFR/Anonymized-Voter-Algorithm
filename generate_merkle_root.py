@@ -1,84 +1,43 @@
-"""Accepts a voter's public key, and register it to the merkle_tree.
+"""Generate a merkle root out of all recorded proxies.
+
+What this module do:
+1) Retrieve proxies from a .csv file
+2) Generate and return a merkle root
 
 read about merkle_tree here: https://bit.ly/3szuTPO
 watch about merkle_tree here: https://bit.ly/3Ng7vyK
 
-Code source: https://trebaud.github.io/posts/merkle-tree/ 
 """
 
-
-from typing import List
-import hashlib
-
-class Node:
-    def __init__(self, left, right, value: str)-> None:
-        self.left: Node = left
-        self.right: Node = right
-        self.value = value
-
-    @staticmethod
-    def hash(val: str)-> str:
-        return hashlib.sha256(val.encode('utf-8')).hexdigest()
-
-    @staticmethod
-    def hashfunc(val: str, n=10)-> str:
-        """Hash ::val ::n number of times"""
-        
-        for _ in range(n):
-            val = Node.hash(val)
-
-        return val
-    
-    
-class MerkleTree:
-    def __init__(self, values: List[str])-> None:
-        self.__build_tree(values)
-
-    def __build_tree(self, values: List[str])-> None:
-        leaves: List[Node] = [Node(None, None, Node.hashfunc(e)) for e in values]
-        if len(leaves) % 2 == 1:
-            leaves.append(leaves[-1:][0]) # duplicate last elem if odd number of elements
-        self.root: Node = self.__build_tree_rec(leaves)
-
-    def __build_tree_rec(self, nodes: List[Node])-> Node:
-        half: int = len(nodes) // 2
-
-        if len(nodes) == 2:
-            return Node(nodes[0], nodes[1], Node.hashfunc(nodes[0].value + nodes[1].value))
-
-        left: Node = self.__build_tree_rec(nodes[:half])
-        right: Node = self.__build_tree_rec(nodes[half:])
-        value: str = Node.hashfunc(left.value + right.value)
-        return Node(left, right, value)
-
-    def print_tree(self)-> None:
-        self.__print_tree_rec(self.root)
-
-    def __print_tree_rec(self, node)-> None:
-        if node != None:
-            print(node.value)
-            self.__print_tree_rec(node.left)
-            self.__print_tree_rec(node.right)
-
-    def get_root_hash(self)-> str:
-        return self.root.value
-    
+import merkletools
+import csv
 
 
 class Voters:
-    FILE = 'shadow_ids.csv'
+    PROXIES = 'proxies.csv'
     
-    def get_all():
-        ids = [] # store IDS in a list data structure
-        return ids
+    def get_all(self):
+        return self.__all_proxies()
+    
+    def __all_proxies(self):
+        with open(self.PROXIES) as proxies:
+            # skips the heading
+            next(proxies)
+            
+            proxy_reader = csv.reader(proxies)
+            all_proxy = [row[0] for row in proxy_reader]
+            return all_proxy
 
 
 
 def main()-> None:
-    voters = Voters.get_all()
-    mtree = MerkleTree(voters)
-    print(mtree.get_root_hash())
+    voters = Voters().get_all()
+    mtools.add_leaf(voters, True)
+    mtools.make_tree()
+    print(mtools.get_merkle_root())
+    
 
 
 if __name__ == '__main__':
+    mtools = merkletools.MerkleTools()
     main()
