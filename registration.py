@@ -11,6 +11,7 @@ What this module will do
 import hashlib
 from csv import writer
 from datetime import datetime
+import pandas as pd
 
 
 def get_voters_proxy(vID):
@@ -18,10 +19,14 @@ def get_voters_proxy(vID):
     return x[:3] + '-' + x[3:6] + '-' + x[6:]
 
 
+def get_number():
+    return len(pd.read_csv(PROXIES))
+
+
 def add_to_db(proxy):
     registration_date = datetime.today().strftime('%m-%d-%Y %H:%M:%S')
     
-    with open('proxies.csv', 'a', newline='') as db:
+    with open(PROXIES, 'a', newline='') as db:
         proxy_writer = writer(db)
         proxy_writer.writerow([proxy, registration_date])
         db.close()
@@ -30,9 +35,14 @@ def add_to_db(proxy):
 
 def success_msg(proxy):
     print('Registration succesful!')
-    print('************************')
+    
+    print('************************', end='\n\n')
+    print('**START OF CREDENTIALS**')
     print('Your proxy: ' + proxy)
-    print('Note: To keep you anonymous, keep your proxy secret.')
+    print('You are voter number: ' + str(get_number()))
+    print('***END OF CREDENTIALS***', end='\n\n')
+    
+    print('Note: To keep you anonymous, keep your credentials secret.')
 
 
 def main():
@@ -44,4 +54,5 @@ def main():
 
 
 if __name__ == '__main__':
+    PROXIES = 'proxies.csv'
     main()
