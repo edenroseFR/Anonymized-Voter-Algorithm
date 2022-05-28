@@ -4,11 +4,23 @@ A prover is someone who wants to prove that they know the secret,
 without disclosing the very secret.
 """
 
-def generate_proof(pk, x, w):
+import rsa
+
+
+def generate_proof(pk: tuple, x: int, w: int):
     """Generate a proof that the prover knows a witness ::w
     and that ::w can be trusted.
+    
+    ::pk = prover's_key
+    ::x = some public key [zip code]
+    ::w = private_witness [the id generated during registration]
     """
     
-    # proof = generate_proof
-    # return proof
-    pass
+    m = w*x
+    proof = rsa.encrypt(pk, m)
+    return proof
+
+
+print(generate_proof((445, 767), 8304, 2))
+
+# prover's key: (445, 767)
