@@ -13,14 +13,15 @@ def generate_proof(pk: tuple, x: int, w: int):
     
     ::pk = prover's_key
     ::x = some public key [zip code]
-    ::w = private_witness [the id generated during registration]
+    ::w = private_witness [the id generated during registration] / provided during registration
     """
     
-    m = w*x
+    m = int(w)*int(x)
     proof = rsa.encrypt(pk, m)
     return proof
 
 
-print(generate_proof((445, 767), 8304, 2))
+    
+print(generate_proof((445, 767), input('Enter zip code: '), input("Enter voter's number: ")))
 
 # prover's key: (445, 767)

@@ -1,0 +1,13 @@
+* Identify registered_ID before generating proxy to avoid duplication.
+
+Challenge:
+
+Did you relly casted your vote?
+    If no,
+        Check if he didn't just cast a vote OR he really is not a verified_voter
+
+
+
+
+
+
