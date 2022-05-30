@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "diesel-nova-308903",
+  "private_key_id": "c83f38a5664bd3646adf91601de9098253b6b7bd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDIxM//jQSerz/E\n/gy7LbRgD/OFJdpI1EChdauBItU22fFokRT4Cyu0PsXv4VyC9E6Bko5MGCTSwuc3\nd8MYgu6m24gjZ+Zrqqokd3ey0VLNqvfsH2IE3TMBbMvBZXHZZL4Ebx+SRyruRtYz\nB8KTAib6VIfQDlyBAVI45DV2P9aCmvovJNzDkRwR2uPOrEMa1ZBH7T+kkrSoce+q\nJXLq2idpcey9MkDZjFZHS3lM7nfLxSb3xieFSIvCv6HW0jx+hpCxhUeLfjwdaj/0\nnGxV3obBmNjyUub3L+YImvFgPocCS8yhKknLseW2Z7qncDw/MTJI6Qiq+0ojborn\nLXUokPwHAgMBAAECggEACUcTB4+oMX8Ottc4lmO/zJqgGbyMkEYCsJNj+AU4jh7X\nKYpeyjGV9O/brMCgykpo4FL58WlCNl0cWzNVGCpgxeQqL9yqyLnrv+CnbuN+bJOk\nfkxa9reUFlJFPiwmbTHbGBBciKFySe2LE3Od2bZFP9ctKX+oZau+dXOSRuMfUgyr\nXueYR0rgwfIl/dtGyzGDjYs2FpIEnnDDSojZkxQ0Keu9ATZum0Jgd78fRTgNgMHb\nz7zbh98SIcNhRQDsu4dPFf8xhNJYaGPxdTeMOoroxcRIy7akd0GVfGK4ADCy+/Vr\nV3tyfpmEOqadKvvJGX3lJyr21IMpkg3Y+mum0xAjbQKBgQDs4AojfTJOAg2m50tg\nZOp6ou2CK5e+Tgz/YOUnarrG6n6iUByYopuFrCzTzdjYBepmyDyhN1B9cxwnY60B\nTUIz4XV9MP4jucW7dlsjN91UGOYOG3Kt3UEUHmY3ZgkMfHFru8nTThmOEGMHK7Z+\nl0AwABgBoku0TPqcV1/QcaWCIwKBgQDY+n4S2CEtmImToakaoURT5W5WPL5WjVVz\nMsvjMjRR52VUERQmnQ4AOnOj514XD6lAnw+GU9XSI7lecBX+7SHSfs3wpPuovz5q\n85Uk7jvAMKkbvCtlyLzB8PN6i4q2cQZEP6F390aIEfoQy+gOcYvw0tg2dRi75npw\nH79WS2aCzQKBgFGZG+T9y8ZzjqBgLOcX3G5Cke61daBo4rFWf5oEejLrtJPVZQRv\nf4OcvBR6ZKiF4Slm8PvYQjH05U3sWDyKkLOuhvqJVgKYjDT3oI2RQP0nVpile+vI\nvBJiJnQPAi7671ddaTkRPlxh6Lsfo84X7FScs6hccBe8LNiOgMMdYxZhAoGAf/wZ\nW4Iy59M+618DAVs4k4gUcje4ShNp4N6Il0XoyJsGEPVV/oTLWmUgCwERZebt/dkU\n7jYLPL2nvMW+o7U6KxBy50xZySqtZaayRatkgTPyvBJdQteKR5eZ9qHSu1SlzqH9\n22Z3KxH3f+rWwZZGZlHoCQ8+/K6xb+u6D+u/1s0CgYEA5fJ8TmD7yDe6EwmGX0Q0\nswsFvJZh9lBjzzY1N3WA5dK+/khYxHmd9y2NBb78OQLuVHcbNFPaj1pIcxStE6YP\n6xYx5dFAPehtwBSMFfCbuR/gwCFKBtn3MwPsrUvn+nymbFiG2JlQOL09jMbYJ/em\nKgrQRK8R2bOsNYTv/uhSpMM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "csc-trail@diesel-nova-308903.iam.gserviceaccount.com",
+  "client_id": "101375311193341844099",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/csc-trail%40diesel-nova-308903.iam.gserviceaccount.com"
+}
