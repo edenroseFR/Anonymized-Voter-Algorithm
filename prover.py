@@ -5,6 +5,7 @@ without disclosing the very secret.
 """
 
 import rsa
+import getpass
 
 
 def generate_proof(pk: tuple, x: int, w: int):
@@ -22,6 +23,6 @@ def generate_proof(pk: tuple, x: int, w: int):
 
 
     
-print(generate_proof((445, 767), input('Enter zip code: '), input("Enter voter's number: ")))
-
+print(generate_proof((445, 767), input('Enter zip code: '), getpass.getpass("Enter voter's number: ")))
+print(f'')
 # prover's key: (445, 767)

@@ -1,5 +1,6 @@
 import sys
 import csv
+import getpass
 from utilities import proof_is_valid
 
 
@@ -21,6 +22,11 @@ def display_message(state=None):
     elif state == 'already_voted':
         print(f"""
               You already casted your vote.
+              {footnote}
+        """)
+    elif state == 'unrecognized_proxy':
+        print(f"""
+              Sorry, the proxy {v_proxy} doesn't exist in the system.
               {footnote}
         """)
         
@@ -91,7 +97,7 @@ def cast_vote():
     global v_proxy
     global vote 
     
-    v_proxy = input("Enter proxy: ")
+    v_proxy = getpass.getpass("Enter proxy: ")
     if v_proxy_exist(v_proxy):
         if no_vote_record():
             show_candidates()
@@ -100,12 +106,17 @@ def cast_vote():
         else:
             display_message('already_voted')
             sys.exit()
+    else:
+        display_message('unrecognized_proxy')
+        sys.exit()
 
 
 def verified_voter():
     z = input("Enter zip code: ")
     v_proof = input("Enter a proof that you are a registered voter: ")
+    print("Verifying...")
     if proof_is_valid(z, v_proof):
+        print("Proof verified.")
         return True
     else:
         return False
