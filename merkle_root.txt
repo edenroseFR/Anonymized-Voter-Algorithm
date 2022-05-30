@@ -1,3 +1,0 @@
-This is where a merkle_root is stored.
-
-::merkle_root is a string resulting from all ::voter's_id
