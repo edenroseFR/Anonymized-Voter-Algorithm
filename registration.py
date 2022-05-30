@@ -34,7 +34,7 @@ def get_number():
     pk =  (445, 767)
     
     v_num = len(pd.read_csv(PROXIES))
-    return encrypt(pk, v_num)
+    return v_num
 
 
 def record_vID(vID):
