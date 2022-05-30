@@ -56,10 +56,7 @@ def get_leaf(idx, prf_file=None):
         print(e)
         return False
     
-    
-1234-34343 == proofs[idx]
-proofs = [l1, l2, l3]
-
+ 
 
 
 def main(prf_file=None):
