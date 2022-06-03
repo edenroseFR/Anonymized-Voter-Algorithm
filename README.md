@@ -30,7 +30,7 @@ python voting_system.py
 3. Open votes.csv to see the result
 
 ## PROVING / VERIFYING
-1. For the prover, execute the following (Zip code: 8304):
+1. For the prover, execute the following:
 ```bash
 python prover.py
 ```
