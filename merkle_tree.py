@@ -12,7 +12,7 @@ watch about merkle_tree here: https://bit.ly/3Ng7vyK
 import merkletools
 import pandas as pd
 from csv import reader
-from rsa import encrypt
+from hashlib import sha256
 
 class Voters:
     PROXIES = 'proxies.csv'
@@ -22,16 +22,12 @@ class Voters:
     def get_proofs(self, x=None):
         proofs = []
         if not x:
-            for i in range(1, self.__voters_count()+1):
-                proof = encrypt(self.pk, self.zcode*i)
+            for i in self.__render_proofs('proxies.csv'):
+                proof = sha256(i.encode('utf-8')).hexdigest()[:20]
                 proofs.append(proof)
         else:
             proofs =  [proof in self.__render_proofs(x)]
         return proofs
-    
-
-    def __voters_count(self):
-        return len(pd.read_csv(self.PROXIES))
     
     
     def __render_proofs(self, fname):
@@ -41,7 +37,7 @@ class Voters:
             # Skips the heading
             next(file_obj)
             reader_obj = reader(file_obj)
-            return [row for row in reader_obj]
+            return [row[0] for row in reader_obj]
 
 
 
@@ -53,7 +49,6 @@ def get_leaf(idx, prf_file=None):
         else:
             return main().get_leaf(i)
     except Exception as e:
-        print(e)
         return False
     
  

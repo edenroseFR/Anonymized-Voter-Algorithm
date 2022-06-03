@@ -97,7 +97,7 @@ def cast_vote():
     global v_proxy
     global vote 
     
-    v_proxy = getpass.getpass("Enter proxy: ")
+    v_proxy = input("Enter proxy: ")
     if v_proxy_exist(v_proxy):
         if no_vote_record():
             show_candidates()
@@ -112,10 +112,9 @@ def cast_vote():
 
 
 def verified_voter():
-    z = input("Enter zip code: ")
     v_proof = input("Enter a proof that you are a registered voter: ")
     print("Verifying...")
-    if proof_is_valid(z, v_proof):
+    if proof_is_valid(v_proof):
         print("Proof verified.")
         return True
     else:

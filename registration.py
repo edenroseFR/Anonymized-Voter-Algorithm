@@ -22,18 +22,12 @@ def get_voters_proxy(vID):
     return x[:3] + '-' + x[3:6] + '-' + x[6:]
 
 
-"""
-password123 ==hash===> 234dSEawdwe
-
-234dSEawdwe ==> password12
-
-"""
-
 
 def get_number():
     pk =  (445, 767)
     
     v_num = len(pd.read_csv(PROXIES))
+    v_num = encrypt((61, 767), v_num)
     return v_num
 
 
@@ -89,3 +83,7 @@ def main():
 if __name__ == '__main__':
     PROXIES = 'proxies.csv'
     main()
+
+
+
+# verifier's_key: (61, 767)

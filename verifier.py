@@ -1,21 +1,26 @@
 """A program that verifies if the claimant is indeed registered in the system"""
 
 
-import rsa
 import hashlib
 from merkle_tree import get_leaf
+from ast import literal_eval
 
-def verify_registration(x, proof, vk=(61, 767)):
+def verify_registration(proof):
     """verify() -> bool
     
     Returns TRUE if the claimant is indeed a registred_voter.
     FALSE, otherwise.
     """
-    
-    decrypted = rsa.decrypt(vk, proof)
-    pos = int(decrypted)//int(x)
+
+
+    l_proof = proof.split('-')
+    proof = [l_proof[i] for i in range(1,len(l_proof))]
+    proof = ''.join(proof)
+    pos = literal_eval(l_proof[0])
     x = hashlib.sha256(proof.encode('utf-8')).hexdigest()
-    if x == get_leaf(pos):
+    r = get_leaf(pos)
+    
+    if x == r:
         return True
     else:
         return False
@@ -40,4 +45,5 @@ def verify_casting():
 
 # verifier's_key: (61, 767)
 if __name__ == '__main__':
-    print(verify_registration(x=8304, proof=input("Enter proof: ")))
+    print(verify_registration(proof=input("Enter proof: ")))
+    

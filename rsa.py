@@ -1,5 +1,6 @@
 def encrypt(k, n):
     i, N = k
+    
     def expmod(base, exp, n):
         bin_exp = bin(exp)[2:][::-1]
         val = 1
@@ -9,7 +10,7 @@ def encrypt(k, n):
             if bin_exp[idx] == '1':
                 val = val*base % n
         return str(val)
-
+    
     encrypted = [expmod(int(c), i, N) for c in list(str(n))]
     return '-'.join(encrypted)
 
